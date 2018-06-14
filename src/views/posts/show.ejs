@@ -24,7 +24,7 @@
         <% post.flairs.forEach((flair) => { %>
           <li class="list-group-item">
             <a href="/topics/<%= post.topicId %>/posts/<%= post.id %>/flairs/<% flair.id %>"
-              style="background-color:<%= flair.color %>;"> <%= flair.name %></a>
+              style="background-color:<%= flair.color %>"> <%= flair.name %></a>
           </li>
        <% }) %>
       </ul>
