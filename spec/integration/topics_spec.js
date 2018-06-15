@@ -80,8 +80,32 @@ describe("routes : topics", () => {
         }
       );
     });
+    
+    it("should not create a new topic that fails validations", (done) => {
+      const options = {
+        url: `${base}create`,
+        form: {
+          title: "a",
+          description: "b"
+        }
+      };
+
+      request.post(options,
+        (err, res, body) => {
+          Topic.findOne({where: {title: "a"}})
+          .then((topic) => {
+              expect(topic).toBeNull();
+              done();
+          })
+          .catch((err) => {
+            console.log(err);
+            done();
+          });
+        }
+      );
+    });
   });
- 
+
   describe("GET /topics/:id", () => {
 
     it("should render a view with the selected topic", (done) => {
@@ -143,12 +167,12 @@ describe("routes : topics", () => {
             description: "There are a lot of them"
           }
         };
-//#1
+
         request.post(options,
           (err, res, body) => {
 
           expect(err).toBeNull();
-//#2
+
           Topic.findOne({
             where: { id: this.topic.id }
           })
