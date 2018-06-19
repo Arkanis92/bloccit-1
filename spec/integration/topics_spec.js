@@ -137,6 +137,8 @@ describe("routes : topics", () => {
         }); 
       });
 
+      
+
       describe("GET /topics/:id/edit", () => { 
         it("should render a view with an edit topic form", (done) => {
           request.get(`${base}${this.topic.id}/edit`, (err, res, body) => {
@@ -148,30 +150,39 @@ describe("routes : topics", () => {
         }); 
       });
 
-      describe("POST /topics/:id/update", () => { 
+      
+      describe("POST /topics/:id/update", () => {
+
         it("should update the topic with the given values", (done) => {
-          const options = {
-             url: `${base}${this.topic.id}/update`,
-             form: {
-               title: "JavaScript Frameworks",
-               description: "There are a lot of them"
-             }
-           };
-           request.post(options,
-             (err, res, body) => {
-   
-             expect(err).toBeNull();
-             Topic.findOne({
-               where: { id: 1 } //changed from this.topic.id
-             })
-             .then((topic) => {
-               expect(topic.title).toBe("JavaScript Frameworks");
-               done();
-             });
-           });
-          });
-         });
-       }) //end context for admin user
+           const options = {
+              url: `${base}${this.topic.id}/update`,
+              form: {
+                title: "JavaScript Frameworks",
+                description: "There are a lot of them"
+              }
+            };
+
+            request.post(options,
+              (err, res, body) => {
+    
+              expect(err).toBeNull();
+              Topic.findOne({
+                where: { id: 1 }
+              })
+              .then((topic) => {
+                expect(topic.title).toBe("JavaScript Frameworks");
+                done();
+              });
+            });
+        });
+    
+      });
+
+    })
+    
+     //end context for admin user
+
+      
     
      // context of member user
        describe("member user performing CRUD actions for Topic", () => {
@@ -268,6 +279,8 @@ describe("routes : topics", () => {
     
         }); 
       });
+      
+      
 
       describe("GET /topics/:id/edit", () => { 
         it("should not render a view with an edit topic form", (done) => {
@@ -294,7 +307,7 @@ describe("routes : topics", () => {
              (err, res, body) => {
              expect(err).toBeNull();
              Topic.findOne({
-               where: { id: 1 } //changed from this.topic.id
+               where: { id: 1 } 
              })
              .then((topic) => {
                expect(topic.title).toBe("JS Frameworks"); //confirm title is unchanged
@@ -303,5 +316,5 @@ describe("routes : topics", () => {
            });
           });
          });
-       });
+       }); 
      });

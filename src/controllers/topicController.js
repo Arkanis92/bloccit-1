@@ -16,17 +16,17 @@ module.exports = {
      })
     },
 
-    new(req, res, next){
+  new(req, res, next){
 
-     const authorized = new Authorizer(req.user).new();
+        const authorized = new Authorizer(req.user).new();
 
-     if(authorized) {
-       res.render("topics/new");
-     } else {
-       req.flash("notice", "You are not authorized to do that.");
-       res.redirect("/topics");
-     }
-   },
+        if(authorized) {
+          res.render("topics/new");
+        } else {
+          req.flash("notice", "You are not authorized to do that.");
+          res.redirect("/topics");
+         }
+       },
 
     create(req, res, next){
 

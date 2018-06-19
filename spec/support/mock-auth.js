@@ -5,11 +5,11 @@ module.exports = {
         let role, id, email;
     
         function middleware(req,res,next){
-
+    
           role = req.body.role || role;
           id = req.body.userId || id;
           email = req.body.email || email;
-
+    
           if(id && id != 0){
             req.user = {
               "id": id,
