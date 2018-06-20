@@ -37,6 +37,7 @@ describe("Post", ()=>{
            this.post = topic.posts[0]; //store the post
            done();
          })
+         
        })
      });
    });
@@ -51,7 +52,7 @@ describe("Post", ()=>{
          	topicId: this.topic.id,
           userId: this.user.id
        	  })
-       	  .then((post)=>{
+       	  .then((post) => {
 
        	  	expect(post.title).toBe("Pros of Cryosleep during the long journey");
             expect(post.body).toBe("1. Not having to answer the 'are we there yet?' question.");
@@ -70,11 +71,6 @@ describe("Post", ()=>{
            title: "Pros of Cryosleep during the long journey"
           })
      	   .then((post) => {
-
-      		// the code in this block will not be evaluated since the validation error
-      		// will skip it. Instead, we'll catch the error in the catch block below
-      		// and set the expectations there
-
        		done();
 
      	  })
