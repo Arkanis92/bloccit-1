@@ -20,7 +20,7 @@ module.exports = {
     return Post.findById(id, {
       include: [
         {model: Comment, as: "comments", include: [
-          {model: User}
+          {model: User }
         ]}
       ]
     })

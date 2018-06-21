@@ -89,10 +89,6 @@ describe("Comment", () => {
       })
       .then((comment) => {
 
-        // the code in this block will not be evaluated since the validation error
-        // will skip it. Instead, I'll catch the error in the catch block below
-        // and set the expectations there
-
         done();
 
       })
@@ -107,11 +103,12 @@ describe("Comment", () => {
 
   });
 
+
   describe("#setUser()", () => {
 
     it("should associate a comment and a user together", (done) => {
 
-      User.create({               
+      User.create({              
         email: "bob@example.com",
         password: "password"
       })
@@ -130,6 +127,7 @@ describe("Comment", () => {
     });
 
   });
+
 
   describe("#getUser()", () => {
 
@@ -170,7 +168,8 @@ describe("Comment", () => {
     });
 
   });
-  
+
+ 
   describe("#getPost()", () => {
 
     it("should return the associated post", (done) => {
