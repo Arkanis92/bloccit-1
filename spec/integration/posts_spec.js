@@ -1,9 +1,10 @@
-const request = require('request');
-const server = require('../../src/server');
-const base = 'http://localhost:3000/topics';
-const sequelize = require('../../src/db/models/index').sequelize;
-const Topic = require('../../src/db/models').Topic;
-const Post = require('../../src/db/models').Post;
+const request = require("request");
+const server = require("../../src/server");
+const base = "http://localhost:3000/topics";
+
+const sequelize = require("../../src/db/models/index").sequelize;
+const Topic = require("../../src/db/models").Topic;
+const Post = require("../../src/db/models").Post;
 const User = require("../../src/db/models").User;
 
 describe("routes : posts", () => {
@@ -12,6 +13,7 @@ describe("routes : posts", () => {
     this.topic;
     this.post;
     this.user;
+
     sequelize.sync({force: true}).then((res) => {
       User.create({
         email: "starman@tesla.com",
@@ -19,6 +21,7 @@ describe("routes : posts", () => {
       })
       .then((user) => {
         this.user = user;
+
         Topic.create({
           title: "Winter Games",
           description: "Post your Winter Games stories.",
@@ -29,8 +32,8 @@ describe("routes : posts", () => {
           }]
         }, {
           include: {
-            model: Post,
-            as: "posts"
+           model: Post,
+           as: "posts"
           }
         })
         .then((topic) => {
@@ -40,9 +43,9 @@ describe("routes : posts", () => {
         })
       })
     });
-  });
 
-  // Context of Guest User
+  });
+  //guest user start
   describe("guest user performing CRUD actions for Post", () => {
 
     beforeEach((done) => {
@@ -138,9 +141,9 @@ describe("routes : posts", () => {
       });
     });
   });
-  });//End Guest User Context
-
-  // Context of Member User
+  });
+  //end guest user 
+  //start member
   describe("admin user performing CRUD actions for Topic", () => {
 
     beforeEach((done) => {
@@ -274,6 +277,6 @@ describe("routes : posts", () => {
       });
     });
   });
-  }); //End Context of Member User
+  }); //member end
 
 });

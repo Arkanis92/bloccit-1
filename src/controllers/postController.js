@@ -36,14 +36,15 @@ module.exports = {
   },
 
   show(req, res, next){
-    postQueries.getPost(req.params.id, (err, post) => {
-      if(err || post == null){
-        res.redirect(404, "/");
-      } else {
-        res.render("posts/show", {post});
-      }
-    });
-  },
+        postQueries.getPost(req.params.id, (err, post) => {
+          if(err || post == null){
+            res.redirect(404, "/");
+          } else {
+            res.render("posts/show", {post});
+          }
+        });
+      },
+      
 
   destroy(req, res, next){
     postQueries.deletePost(req, (err, post) => {
