@@ -128,7 +128,7 @@ describe("Vote", () => {
             console.log(err);
             done();
           });
-        });
+        }); 
  
         it("should not create a vote without assigned post or user", (done) => {
           Vote.create({
@@ -163,7 +163,7 @@ describe("Vote", () => {
              });
             });
 
-      });
+      }); 
 
       describe("#setUser()", () => {
 
@@ -347,5 +347,6 @@ describe("Vote", () => {
           });
         });
       });
+      
 
 });

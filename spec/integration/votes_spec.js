@@ -177,7 +177,7 @@ describe("routes : votes", () => {
 
     describe("GET /topics/:topicId/posts/:postId/votes/downvote", () => {
 
-      it("should not create multiple downvotes per user", (done) => {
+      it("should not create multiple votes per user", (done) => {
         const options = {
           url: `${base}${this.topic.id}/posts/${this.post.id}/votes/downvote`
         };
