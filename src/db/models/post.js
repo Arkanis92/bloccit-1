@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
       as: "votes"
     });
     
-    
+    };
     Post.prototype.getPoints = function(){
       if(this.votes.length === 0) return 0
         return this.votes
@@ -55,6 +55,6 @@ module.exports = (sequelize, DataTypes) => {
     Post.prototype.hasDownvoteFor = function(userId){
       if(this.votes.userId == userId && this.votes.value === -1) return true
     };
-  };
+
         return Post;
 };

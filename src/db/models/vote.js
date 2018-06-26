@@ -4,10 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     value: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      default: 0,
       validate: {
         isIn: [[-1, 1]]
       }
-    },
+},
     postId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -18,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Vote.associate = function(models) {
- 
+    
     Vote.belongsTo(models.Post, {
       foreignKey: "postId",
       onDelete: "CASCADE"
